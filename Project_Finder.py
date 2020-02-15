@@ -1,11 +1,18 @@
 from tkinter import *
 from tkinter import ttk
 import os
+import configparser
 #import everything from the tkinter module here
+
+#Open project config file here:
+config = configparser.ConfigParser()
+config.read("config.ini")
+
+
 
 #globals
 bg = "#87CEEB"
-project_repo = "C:\\Users\\User\\Documents"
+project_repo = config['paths']['project']
 
 
 class IProject:
