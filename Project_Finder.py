@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import ttk
 import os
 import configparser
+import project as prj
+
 #import everything from the tkinter module here
 
 #Open project config file here:
@@ -9,29 +11,11 @@ config = configparser.ConfigParser()
 config.read("config.ini")
 
 
-
 #globals
 bg = "#87CEEB"
+
 project_repo = config['paths']['project']
 
-
-class IProject:
-	subdir = []
-
-	def _init_(self, name):
-		print(name)
-
-	def format(self, mode):
-		if mode == 0:
-			output_string = ""
-			for item in self.subdir:
-				output_string = output_string + item + "\t"
-		else:
-			output_string = "Not Supported"
-		return output_string
-
-	def identify(self):
-		print(type(self))
 
 #This is the application class
 
@@ -76,7 +60,7 @@ class Project_Finder_UI(Frame):
     def search(self):
     	# Delete items in the list
     	self.results.delete(0, END)
-    	CCSProject = IProject()
+    	CCSProject = prj.IProject()
     	dirlist = os.listdir(project_repo)
     	for project in dirlist[0:5]:
 
